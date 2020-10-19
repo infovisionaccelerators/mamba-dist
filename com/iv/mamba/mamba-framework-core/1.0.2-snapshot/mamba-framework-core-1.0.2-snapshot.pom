@@ -12,10 +12,13 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <encoding>UTF-8</encoding>
-        <serenity.version>2.0.49</serenity.version>
-        <serenity.maven.version>2.0.49</serenity.maven.version>
-        <serenity.cucumber.version>1.0.12</serenity.cucumber.version>
-        <cucumber.version>4.2.0</cucumber.version>
+        <serenity.maven.version>2.3.4</serenity.maven.version>
+        <serenity.version>2.3.4</serenity.version>
+        <serenity.junit.version>2.3.4</serenity.junit.version>
+        <serenity.cucumber6.version>2.3.4</serenity.cucumber6.version>
+        <cucumber.java.version>2.0.0</cucumber.java.version>
+        <cucumber.junit.version>6.8.1</cucumber.junit.version>
+        <serenity.cucumber.version>1.9.51</serenity.cucumber.version>
         <logback.version>1.2.3</logback.version>
         <parallel.tests>4</parallel.tests>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -95,37 +98,41 @@
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-single-page-report</artifactId>
+            <version>${serenity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-rest-assured</artifactId>
             <version>${serenity.version}</version>
             <!--scope>test</scope-->
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>net.serenity-bdd</groupId>-->
+<!--            <artifactId>serenity-cucumber4</artifactId>-->
+<!--            <version>${serenity.cucumber4.version}</version>-->
+<!--            &lt;!&ndash;scope>test</scope&ndash;&gt;-->
+<!--        </dependency>-->
         <dependency>
             <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-cucumber4</artifactId>
-            <version>${serenity.cucumber.version}</version>
-            <!--scope>test</scope-->
-        </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-cucumber</artifactId>
-            <version>1.0.2</version>
+            <artifactId>serenity-cucumber6</artifactId>
+            <version>${serenity.cucumber6.version}</version>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-junit</artifactId>
-            <version>${serenity.version}</version>
-            <!--scope>test</scope-->
+            <version>${serenity.junit.version}</version>
         </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-emailer</artifactId>
-            <version>${serenity.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>${cucumber.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>net.serenity-bdd</groupId>-->
+<!--            <artifactId>serenity-emailer</artifactId>-->
+<!--            <version>${serenity.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.cucumber</groupId>-->
+<!--            <artifactId>cucumber-java</artifactId>-->
+<!--            <version>${cucumber.java.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.github.fslev</groupId>
             <artifactId>json-compare</artifactId>
@@ -155,7 +162,7 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>${cucumber.version}</version>
+            <version>${cucumber.junit.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -230,13 +237,38 @@
                 </executions>
             </plugin>
 
+<!--            <plugin>-->
+<!--                <groupId>net.serenity-bdd.maven.plugins</groupId>-->
+<!--                <artifactId>serenity-maven-plugin</artifactId>-->
+<!--                <version>${serenity.maven.version}</version>-->
+<!--                <configuration>-->
+<!--                    <tags>${tags}</tags>-->
+<!--                    <reports>email</reports>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>serenity-reports</id>-->
+<!--                        <phase>post-integration-test</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>aggregate</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.maven.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.serenity-bdd</groupId>
+                        <artifactId>serenity-single-page-report</artifactId>
+                        <version>${serenity.version}</version>
+                    </dependency>
+                </dependencies>
                 <configuration>
                     <tags>${tags}</tags>
-                    <reports>email</reports>
+                    <reports>single-page-html</reports>
                 </configuration>
                 <executions>
                     <execution>
