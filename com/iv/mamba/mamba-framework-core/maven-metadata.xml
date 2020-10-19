@@ -3,10 +3,10 @@
   <groupId>com.iv.mamba</groupId>
   <artifactId>mamba-framework-core</artifactId>
   <versioning>
-    <release>1.0.1</release>
+    <release>1.0.2-snapshot</release>
     <versions>
-      <version>1.0.1</version>
+      <version>1.0.2-snapshot</version>
     </versions>
-    <lastUpdated>20201005014802</lastUpdated>
+    <lastUpdated>20201019013933</lastUpdated>
   </versioning>
 </metadata>
